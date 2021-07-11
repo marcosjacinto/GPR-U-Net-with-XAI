@@ -1,0 +1,4 @@
+outs:
+- md5: 754110e1f3c8dee5cb6bfafbea2556dc
+  size: 3694
+  path: yj_transformer_list.pkl

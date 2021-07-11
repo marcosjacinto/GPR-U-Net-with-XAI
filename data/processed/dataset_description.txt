@@ -1,0 +1,12 @@
+Dataset description:
+This dataset contains the following attributes in order inside the array:
+Similarity, Energy, Instantaneous Frequency,
+Instantaneous Phase, Hilbert/Similarity
+Number of examples in the train dataset 144942
+Number of examples in the validation dataset 4263
+Number of examples in the test dataset 13050
+Test section was section number 089 and 096Sample size is 16x16
+Sample density is 1
+Noise was used
+Noise parameters used were: 0 and 0.01
+Scaled between 0 and 1
