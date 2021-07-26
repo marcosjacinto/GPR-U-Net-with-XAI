@@ -4,7 +4,7 @@ Number of examples in the train dataset 144942
 Number of examples in the validation dataset 4263
 Number of examples in the test dataset 13050
 Test metrics:
-loss : 0.1906699538230896; tp : 2513128.0; fp : 79629.0
-tn : 561654.0; fn : 186389.0; accuracy : 0.9203729629516602
-precision : 0.9692879319190979; recall : 0.9309546947479248; auc : 0.9659848809242249
-f1 score : 0.9481463421240227
+loss : 0.18509866297245026; tp : 2538749.0; fp : 94603.0
+tn : 546680.0; fn : 160768.0; accuracy : 0.9235599040985107
+precision : 0.9640750885009766; recall : 0.9404456615447998; auc : 0.9664635062217712
+f1 score : 0.9532770903106819
