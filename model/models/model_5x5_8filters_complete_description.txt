@@ -1,0 +1,12 @@
+Model description:
+This dataset contains the following attributes inside the array:
+GPR Section, Similarity, Energy, Instantaneous Frequency, Instantaneous Phase, Hilbert/Similarity
+Number of examples in the train dataset 144942
+Number of examples in the validation dataset 4263
+Number of examples in the test dataset 13050
+Test metrics:
+loss : 0.19732780754566193; tp : 2477918.0; fp : 64543.0
+tn : 576740.0; fn : 221599.0; accuracy : 0.9143492579460144
+precision : 0.9746139645576477; recall : 0.9179115891456604; auc : 0.9688958525657654
+dice : 0.1096244752407074
+f1 score : 0.19696374127030594

@@ -1,0 +1,10 @@
+Model description:
+This dataset contains the following attributes in sampleSizeer inside the array:
+Number of examples in the train dataset 144942
+Number of examples in the validation dataset 4263
+Number of examples in the test dataset 13050
+Test metrics:
+loss : 0.38730472326278687; tp : 2539508.0; fp : 458672.0
+tn : 182611.0; fn : 160009.0; accuracy : 0.8148105144500732
+precision : 0.8470165133476257; recall : 0.9407268166542053; auc : 0.8127850294113159
+f1 score : 0.8720884036887558

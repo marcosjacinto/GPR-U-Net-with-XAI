@@ -1,0 +1,4 @@
+outs:
+- md5: 513fae7195da769f86d388eb77155de3
+  size: 248960
+  path: x_test_area_c.npy
