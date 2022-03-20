@@ -11,7 +11,7 @@ shap = "^0.40.0"
 tensorflow = "^2.8.0"
 scikit-image = "^0.19.2"
 segyio = "^1.9.9"
-mlflow = "^1.24.0"
+mlflow = {extras = ["tensorflow"], version = "^1.24.0"}
 
 [tool.poetry.dev-dependencies]
 black = "^22.1.0"
