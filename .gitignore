@@ -4,5 +4,6 @@ __pycache__
 *.npy
 .venv
 *.log
+*.pkl
 mlruns/
 .vscode/

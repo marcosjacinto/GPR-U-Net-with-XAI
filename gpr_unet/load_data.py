@@ -26,7 +26,7 @@ def segy_to_numpy(segy_file: segyio.SegyFile) -> np.ndarray:
         segy_file (segyio.SegyFile): a SegyFile object.
 
     Returns:
-        npt.NDArray: a numpy array converted from the segy file.
+        np.ndarray: a numpy array converted from the segy file.
     """
     n_samples: int = len(segy_file.samples)  # type: ignore
     n_traces: int = len(segy_file.trace)
