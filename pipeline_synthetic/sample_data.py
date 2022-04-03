@@ -3,6 +3,7 @@ from pathlib import Path
 
 import mlflow
 import numpy as np
+from sklearn import model_selection
 
 from gpr_unet import sample
 
@@ -23,10 +24,17 @@ def main():
     y_train = sample.sample_data(y_train, sample_size, sampling_step)
     y_test = sample.sample_data(y_test, sample_size, sampling_step)
 
+    logger.info("Creating validation set from training set")
+    x_train, x_val, y_train, y_val = model_selection.train_test_split(
+        x_train, y_train, test_size=0.15, random_state=42
+    )
+
     logger.info("Saving sampled data to disk")
     np.save(output_path.joinpath("x_train_sampled.npy"), x_train)
+    np.save(output_path.joinpath("x_val_sampled.npy"), x_val)
     np.save(output_path.joinpath("x_test_sampled.npy"), x_test)
     np.save(output_path.joinpath("y_train_sampled.npy"), y_train)
+    np.save(output_path.joinpath("y_val_sampled.npy"), y_val)
     np.save(output_path.joinpath("y_test_sampled.npy"), y_test)
 
 
