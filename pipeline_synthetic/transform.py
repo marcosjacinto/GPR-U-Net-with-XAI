@@ -36,6 +36,9 @@ def main():
     )
     logger.info("Logging transformer to MLflow")
     mlflow.log_artifact(output_path.joinpath(f"transformer.pkl"))
+    dump(scaler, open(output_path.joinpath(f"scaler.pkl"), "wb"))
+    logger.info("Logging scaler to MLflow")
+    mlflow.log_artifact(output_path.joinpath(f"scaler.pkl"))
 
     logger.info("Saving transformed data to disk")
     np.save(output_path.joinpath("x_train_chunks_transformed.npy"), x_train)
