@@ -17,14 +17,18 @@ def main():
     x_test_original_shape = x_test.shape
 
     logger.info("Fitting and transforming x training and then applying to test data")
-
     transformer = preprocessing.PowerTransformer(method="yeo-johnson")
+    scaler = preprocessing.MinMaxScaler()
+
     reshaped_x_train = x_train.reshape(-1, x_train_original_shape[-1])
-    x_train = transformer.fit_transform(reshaped_x_train).reshape(
-        x_train_original_shape
-    )
+    x_train = transformer.fit_transform(reshaped_x_train)
+    x_train = scaler.fit_transform(x_train)
+    x_train = x_train.reshape(x_train_original_shape)
+
     reshaped_x_test = x_test.reshape(-1, x_test_original_shape[-1])
-    x_test = transformer.transform(reshaped_x_test).reshape(x_test_original_shape)
+    x_test = transformer.transform(reshaped_x_test)
+    x_test = scaler.transform(x_test)
+    x_test = x_test.reshape(x_test_original_shape)
 
     dump(
         transformer,
