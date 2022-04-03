@@ -13,7 +13,7 @@ from tensorflow.keras.layers import Input
 
 def main():
 
-    with mlflow.start_run():
+    with mlflow.start_run(nested=True):
 
         mlflow.tensorflow.autolog()
 
@@ -75,9 +75,12 @@ def main():
 
         log_test_metrics_and_history(x_test, y_test, model, history)
 
+        mlflow.log_artifact(script_dir.joinpath("train.log"))
+
 
 def log_test_metrics_and_history(x_test, y_test, model, history):
     test_metrics = model.evaluate(x_test, y_test)
+
     metrics_names = [
         "test_loss",
         "test_tp",
@@ -88,7 +91,6 @@ def log_test_metrics_and_history(x_test, y_test, model, history):
         "test_precision",
         "test_recall",
         "test_auc",
-        "test_dice",
     ]
     f1_score = (
         2
@@ -98,10 +100,9 @@ def log_test_metrics_and_history(x_test, y_test, model, history):
     test_metrics = {metric: test_metrics[i] for i, metric in enumerate(metrics_names)}
     test_metrics["test_f1_score"] = f1_score
     mlflow.log_metrics(test_metrics)
-    outputPath = "model/models/"
 
-    dump(history.history, open(f"{outputPath}training_history.pkl", "wb"))
-    mlflow.log_artifact(f"{outputPath}training_history.pkl")
+    dump(history.history, open(f"processed_data/training_history.pkl", "wb"))
+    mlflow.log_artifact(f"processed_data/training_history.pkl")
 
 
 def load_processed_data():
@@ -128,10 +129,9 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(asctime)s %(message)s",
         datefmt="%d-%m-%Y %H:%M:%S",
-        filename=script_dir.joinpath("segregate.log"),
+        filename=script_dir.joinpath("train.log"),
         filemode="w",
     )
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("segregate.log"))
