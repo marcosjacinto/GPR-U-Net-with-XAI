@@ -8,7 +8,7 @@ import numpy as np
 
 def main():
 
-    number_of_samples = 16
+    number_of_samples = 17  # 11 or 17
     logger.info("Dividing data into %s-sample chunks", number_of_samples)
     train_size = int(0.8 * number_of_samples)
     logger.info("Using training size: %s chunks", train_size)
@@ -30,10 +30,10 @@ def main():
 
     logger.info("Splitting data into training and test sets")
     x_train_chunks, x_test_chunks = train_test_split(
-        x_data, train_samples, test_samples
+        x_data, train_samples, test_samples, number_of_samples
     )
     y_train_chunks, y_test_chunks = train_test_split(
-        y_data, train_samples, test_samples
+        y_data, train_samples, test_samples, number_of_samples
     )
     logger.info("Data split into training and test sets. Saving to disk")
     assert (
@@ -60,26 +60,26 @@ def main():
     np.save(output_path.joinpath("y_train_chunks.npy"), y_train_chunks)
     np.save(output_path.joinpath("y_test_chunks.npy"), y_test_chunks)
 
-    # FIXME: should segregate y_train and y_test as well
-
 
 def train_test_split(
-    data: np.ndarray, train_samples: t.Set[int], test_samples: t.Set[int]
+    data: np.ndarray,
+    train_samples: t.Set[int],
+    test_samples: t.Set[int],
+    number_of_samples: int = 17,
 ) -> t.Tuple[np.ndarray, np.ndarray]:
 
     number_of_traces = data.shape[1]
-    step = int(number_of_traces / 16)
+    step = int(number_of_traces / number_of_samples)
     data_chunks = {}
-    number_of_samples = 16
     start = 0
     for sample_number in range(number_of_samples):
         data_chunks[sample_number] = data[:, start : start + step, :]
         start += step
 
-    train_data = np.concatenate(
+    train_data = np.hstack(
         [data_chunks[sample_number] for sample_number in train_samples]
     )
-    test_data = np.concatenate(
+    test_data = np.hstack(
         [data_chunks[sample_number] for sample_number in test_samples]
     )
 

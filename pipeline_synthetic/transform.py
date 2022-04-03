@@ -13,27 +13,25 @@ def main():
     x_train = np.load(output_path.joinpath("x_train_chunks.npy"))
     x_test = np.load(output_path.joinpath("x_test_chunks.npy"))
 
-    transformer = preprocessing.PowerTransformer(method="yeo-johnson")
+    x_train_original_shape = x_train.shape
+    x_test_original_shape = x_test.shape
 
     logger.info("Fitting and transforming x training and then applying to test data")
-    for channel_number in range(x_train.shape[-1]):
-        logger.info("Transforming channel %s", channel_number)
-        transformer = preprocessing.PowerTransformer(method="yeo-johnson")
 
-        x_train[:, :, channel_number] = transformer.fit_transform(
-            x_train[:, :, channel_number]
-        )
+    transformer = preprocessing.PowerTransformer(method="yeo-johnson")
+    reshaped_x_train = x_train.reshape(-1, x_train_original_shape[-1])
+    x_train = transformer.fit_transform(reshaped_x_train).reshape(
+        x_train_original_shape
+    )
+    reshaped_x_test = x_test.reshape(-1, x_test_original_shape[-1])
+    x_test = transformer.transform(reshaped_x_test).reshape(x_test_original_shape)
 
-        x_test[:, :, channel_number] = transformer.transform(
-            x_test[:, :, channel_number]
-        )
-
-        dump(
-            transformer,
-            open(output_path.joinpath(f"transformer_{channel_number}.pkl"), "wb"),
-        )
-        logger.info("Transformed channel %s. Logging to MLFlow", channel_number)
-        mlflow.log_artifact(output_path.joinpath(f"transformer_{channel_number}.pkl"))
+    dump(
+        transformer,
+        open(output_path.joinpath(f"transformer.pkl"), "wb"),
+    )
+    logger.info("Logging transformer to MLflow")
+    mlflow.log_artifact(output_path.joinpath(f"transformer.pkl"))
 
     logger.info("Saving transformed data to disk")
     np.save(output_path.joinpath("x_train_chunks_transformed.npy"), x_train)
