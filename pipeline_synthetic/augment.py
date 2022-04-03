@@ -10,8 +10,8 @@ from gpr_unet import data_augmentation
 def main():
 
     logger.info("Loading transformed data and ground truth")
-    x_train = np.load(output_path.joinpath("x_train_chunks_transformed.npy"))
-    y_train = np.load(output_path.joinpath("y_train_chunks.npy"))
+    x_train = np.load(output_path.joinpath("x_train_sampled.npy"))
+    y_train = np.load(output_path.joinpath("y_train_sampled.npy"))
 
     logger.info("Augmenting data")
     mean = 0.0
@@ -47,10 +47,10 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(asctime)s %(message)s",
         datefmt="%d-%m-%Y %H:%M:%S",
-        filename=script_dir.joinpath("feature_engineering.log"),
+        filename=script_dir.joinpath("augment.log"),
         filemode="w",
     )
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("feature_engineering.log"))
+    mlflow.log_artifact(script_dir.joinpath("augment.log"))

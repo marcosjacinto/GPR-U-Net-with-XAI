@@ -9,7 +9,7 @@ from gpr_unet import load_data, utils
 
 def main():
 
-    raw_data_path = "pipeline_synthetic/raw_data"
+    raw_data_path = "raw_data"
 
     logger.info("Loading data and converting to numpy arrays")
     gpr = load_data.gpr_data_to_numpy(f"{raw_data_path}/gpr.sgy")

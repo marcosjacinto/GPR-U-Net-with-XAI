@@ -1,0 +1,12 @@
+name: synthetic pipeline
+
+entry_points:
+  pipeline:
+    command: "python process_data.py && \
+      python segregate.py && \
+      python transform.py && \
+      python augment.py && \
+      python sample_data.py && \
+      python train.py"
+# To run:
+# mlflow run --experiment-name synthetic --entry-point pipeline --no-conda pipeline_synthetic/
