@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "gpr-u-net-with-xai"
+name = "gpr_unet"
 version = "0.1.0"
 description = ""
 authors = ["marcos <marcos.gomesjacinto@gmail.com>"]
@@ -13,7 +13,6 @@ segyio = "^1.9.9"
 scikit-image = "^0.19.2"
 
 [tool.poetry.dev-dependencies]
-mccabe = "^0.7.0"
 pydocstyle = "^6.1.1"
 isort = "^5.10.1"
 pycodestyle = "^2.8.0"
@@ -21,6 +20,7 @@ jupyterlab = "^3.3.2"
 black = "^22.3.0"
 mypy = "^0.942"
 matplotlib = "^3.5.1"
+mccabe = "^0.7.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

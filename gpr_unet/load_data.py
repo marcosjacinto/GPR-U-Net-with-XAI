@@ -64,7 +64,7 @@ def load_ground_truth(image_path: str) -> np.ndarray:
         image_path (str): local path in which the ground truth is stored.
 
     Returns:
-        npt.NDArray: a numpy array containing the ground truth.
+        np.ndarray: a numpy array containing the ground truth.
     """
     array = color.rgb2gray(io.imread(image_path))
     array = np.where(array >= 0.5, 1, 0)

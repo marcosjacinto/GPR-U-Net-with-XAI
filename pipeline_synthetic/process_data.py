@@ -45,13 +45,20 @@ def main():
     hilbert_similarity = np.divide(hilbert, similarity)
     hilbert_similarity = np.nan_to_num(hilbert_similarity, nan=0, posinf=0, neginf=0)
 
+    logger.info("Loading the ground truth and clipping it")
+    ground_truth = load_data.load_ground_truth(f"{raw_data_path}/gpr_GroundTruth.jpg")
+    ground_truth = utils.clip(ground_truth, sample_size)
+
     logger.info("Concatenating data into a single array")
     data = np.stack(
         [gpr, similarity, energy, inst_freq, inst_phase, hilbert_similarity], axis=-1
     )
 
     logger.info("Saving data to disk")
-    np.save(output_path.joinpath("data.npy"), data)
+    logger.info("X shape: %s", data.shape)
+    logger.info("Y shape: %s", ground_truth.shape)
+    np.save(output_path.joinpath("x_data.npy"), data)
+    np.save(output_path.joinpath("y_data.npy"), ground_truth)
 
 
 if __name__ == "__main__":
