@@ -14,10 +14,10 @@ augmentation:
 training:
   loss: "binary_crossentropy"
   batch_size: 256
-  epochs: 1
+  epochs: 400
   early_stop_patience: 30
   early_stop_monitor: "val_accuracy"
-  number_of_filters: 10
+  number_of_filters: 8
   kernel_size: 5
   dropout_rate: 0.5
 
