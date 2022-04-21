@@ -7,10 +7,11 @@ authors = ["marcos <marcos.gomesjacinto@gmail.com>"]
 [tool.poetry.dependencies]
 python = ">=3.8.13,<3.10"
 shap = "^0.40.0"
-tensorflow = "^2.8.0"
 mlflow = "^1.24.0"
 segyio = "^1.9.9"
 scikit-image = "^0.19.2"
+hydra-core = "^1.1.2"
+tensorflow = "2.7.0"
 
 [tool.poetry.dev-dependencies]
 pydocstyle = "^6.1.1"

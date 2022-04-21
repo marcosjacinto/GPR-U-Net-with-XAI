@@ -1,14 +1,16 @@
 import logging
 from pathlib import Path
 
+import hydra
 import mlflow
 import numpy as np
+from gpr_unet import sample
+from omegaconf import DictConfig
 from sklearn import model_selection
 
-from gpr_unet import sample
 
-
-def main():
+@hydra.main(config_name="config")
+def main(config: DictConfig):
 
     logger.info("Loading transformed data and ground truth")
     x_train = np.load(output_path.joinpath("x_train_chunks_transformed.npy"))
@@ -17,8 +19,8 @@ def main():
     y_test = np.load(output_path.joinpath("y_test_chunks.npy"))
 
     logger.info("Sampling data")
-    sample_size = 16
-    sampling_step = 1
+    sample_size = config["sampling"]["sample_size"]
+    sampling_step = config["sampling"]["sampling_step"]
     x_train = sample.sample_data(x_train, sample_size, sampling_step)
     x_test = sample.sample_data(x_test, sample_size, sampling_step)
     y_train = sample.sample_data(y_train, sample_size, sampling_step)
@@ -48,10 +50,12 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(asctime)s %(message)s",
         datefmt="%d-%m-%Y %H:%M:%S",
-        filename=script_dir.joinpath("sample_data.log"),
-        filemode="w",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(filename="sample_data.log", mode="w"),
+        ],
     )
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("sample_data.log"))
+    mlflow.log_artifact(script_dir.joinpath("outputs/sample_data.log"))

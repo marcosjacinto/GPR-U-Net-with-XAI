@@ -7,7 +7,7 @@ from tensorflow.keras.layers import (
 )
 
 
-def build_model(input_layer, number_of_filters, kernel_size):
+def build_model(input_layer, number_of_filters, kernel_size, dropout_rate=0.5):
     # sampleSize -> sampleSize/2
     conv1 = Conv2D(
         number_of_filters * 1, kernel_size, activation="relu", padding="same"
@@ -16,7 +16,7 @@ def build_model(input_layer, number_of_filters, kernel_size):
         number_of_filters * 1, kernel_size, activation="relu", padding="same"
     )(conv1)
     pool1 = MaxPooling2D((2, 2))(conv1)
-    pool1 = Dropout(0.25)(pool1)
+    pool1 = Dropout(dropout_rate)(pool1)
 
     # sampleSize/2 -> sampleSize/4
     conv2 = Conv2D(
@@ -26,7 +26,7 @@ def build_model(input_layer, number_of_filters, kernel_size):
         number_of_filters * 2, kernel_size, activation="relu", padding="same"
     )(conv2)
     pool2 = MaxPooling2D((2, 2))(conv2)
-    pool2 = Dropout(0.5)(pool2)
+    pool2 = Dropout(dropout_rate)(pool2)
 
     # sampleSize/4 -> sampleSize/8
     conv3 = Conv2D(
@@ -36,7 +36,7 @@ def build_model(input_layer, number_of_filters, kernel_size):
         number_of_filters * 4, kernel_size, activation="relu", padding="same"
     )(conv3)
     pool3 = MaxPooling2D((2, 2))(conv3)
-    pool3 = Dropout(0.5)(pool3)
+    pool3 = Dropout(dropout_rate)(pool3)
 
     # sampleSize/8 -> sampleSize/16
     conv4 = Conv2D(
@@ -46,7 +46,7 @@ def build_model(input_layer, number_of_filters, kernel_size):
         number_of_filters * 8, kernel_size, activation="relu", padding="same"
     )(conv4)
     pool4 = MaxPooling2D((2, 2))(conv4)
-    pool4 = Dropout(0.5)(pool4)
+    pool4 = Dropout(dropout_rate)(pool4)
 
     # Middle
     convm = Conv2D(
@@ -61,7 +61,7 @@ def build_model(input_layer, number_of_filters, kernel_size):
         number_of_filters * 8, kernel_size, strides=(2, 2), padding="same"
     )(convm)
     uconv4 = concatenate([deconv4, conv4])
-    uconv4 = Dropout(0.5)(uconv4)
+    uconv4 = Dropout(dropout_rate)(uconv4)
     uconv4 = Conv2D(
         number_of_filters * 8, kernel_size, activation="relu", padding="same"
     )(uconv4)
@@ -74,7 +74,7 @@ def build_model(input_layer, number_of_filters, kernel_size):
         number_of_filters * 4, kernel_size, strides=(2, 2), padding="same"
     )(uconv4)
     uconv3 = concatenate([deconv3, conv3])
-    uconv3 = Dropout(0.5)(uconv3)
+    uconv3 = Dropout(dropout_rate)(uconv3)
     uconv3 = Conv2D(
         number_of_filters * 4, kernel_size, activation="relu", padding="same"
     )(uconv3)
@@ -87,7 +87,7 @@ def build_model(input_layer, number_of_filters, kernel_size):
         number_of_filters * 2, kernel_size, strides=(2, 2), padding="same"
     )(uconv3)
     uconv2 = concatenate([deconv2, conv2])
-    uconv2 = Dropout(0.5)(uconv2)
+    uconv2 = Dropout(dropout_rate)(uconv2)
     uconv2 = Conv2D(
         number_of_filters * 2, kernel_size, activation="relu", padding="same"
     )(uconv2)
@@ -100,7 +100,7 @@ def build_model(input_layer, number_of_filters, kernel_size):
         number_of_filters * 1, kernel_size, strides=(2, 2), padding="same"
     )(uconv2)
     uconv1 = concatenate([deconv1, conv1])
-    uconv1 = Dropout(0.5)(uconv1)
+    uconv1 = Dropout(dropout_rate)(uconv1)
     uconv1 = Conv2D(
         number_of_filters * 1, kernel_size, activation="relu", padding="same"
     )(uconv1)
@@ -108,7 +108,7 @@ def build_model(input_layer, number_of_filters, kernel_size):
         number_of_filters * 1, kernel_size, activation="relu", padding="same"
     )(uconv1)
 
-    # uconv1 = Dropout(0.5)(uconv1)
+    # uconv1 = Dropout(dropout_rate)(uconv1)
     outputLayer = Conv2D(1, (1, 1), padding="same", activation="sigmoid")(uconv1)
 
     return outputLayer

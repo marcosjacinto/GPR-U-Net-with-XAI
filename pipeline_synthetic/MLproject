@@ -2,11 +2,14 @@ name: synthetic pipeline
 
 entry_points:
   pipeline:
-    command: "python process_data.py && \
-      python segregate.py && \
-      python transform.py && \
-      python sample_data.py && \
-      python augment.py && \
-      python train.py"
-# To run:
-# mlflow run --experiment-name synthetic --entry-point pipeline --no-conda pipeline_synthetic/
+    parameters:
+      hydra_options:
+        description: Hydra parameters to override
+        type: str
+        default: ""
+    command: "python process_data.py $(echo {hydra_options}) && \
+      python segregate.py $(echo {hydra_options}) && \
+      python transform.py $(echo {hydra_options}) && \
+      python sample_data.py $(echo {hydra_options}) && \
+      python augment.py $(echo {hydra_options}) && \
+      python train.py $(echo {hydra_options})"

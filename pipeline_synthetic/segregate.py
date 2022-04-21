@@ -2,13 +2,23 @@ import logging
 import typing as t
 from pathlib import Path
 
+import hydra
 import mlflow
 import numpy as np
+from omegaconf import DictConfig
 
 
-def main():
+@hydra.main(config_name="config")
+def main(config: DictConfig):
 
-    number_of_samples = 17  # 11 or 17
+    np.random.seed(config["segregate"]["random_seed"])
+
+    if config["sampling"]["sample_size"] == 16:
+        number_of_samples = 17
+    elif config["sampling"]["sample_size"] == 32:
+        number_of_samples = 16
+    else:
+        number_of_samples = config["segregate"]["number_of_samples"]
     logger.info("Dividing data into %s-sample chunks", number_of_samples)
     train_size = int(0.8 * number_of_samples)
     logger.info("Using training size: %s chunks", train_size)
@@ -96,10 +106,12 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(asctime)s %(message)s",
         datefmt="%d-%m-%Y %H:%M:%S",
-        filename=script_dir.joinpath("segregate.log"),
-        filemode="w",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(filename="segregate.log", mode="w"),
+        ],
     )
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("segregate.log"))
+    mlflow.log_artifact(script_dir.joinpath("outputs/segregate.log"))

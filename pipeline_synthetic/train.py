@@ -1,31 +1,45 @@
 import logging
-import typing as t
+import shutil
 from pathlib import Path
 from pickle import dump
 
+import hydra
 import mlflow
 import numpy as np
 import tensorflow as tf
 from gpr_unet.model import build_model
+from omegaconf import DictConfig
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Input
 
 
-def main():
+@hydra.main(config_name="config")
+def main(config: DictConfig):
 
     with mlflow.start_run(nested=True):
 
         mlflow.tensorflow.autolog()
 
-        x_train, y_train, x_val, y_val, x_test, y_test = load_processed_data()
+        x_train, y_train, x_val, y_val, x_test, y_test = load_processed_data(config)
 
-        imgSizeTarget = x_train.shape[1]
-        numberOfChannels = x_train.shape[-1]
-        initialNumberOfFilters = 8
-        kernelSize = (5, 5)
+        img_size_target = x_train.shape[1]
+        number_of_channels = x_train.shape[-1]
+        initial_number_of_filters = config["training"]["number_of_filters"]
+        kernel_size = (
+            config["training"]["kernel_size"],
+            config["training"]["kernel_size"],
+        )
+        dropout_rate = config["training"]["dropout_rate"]
+        logger.info(f"Image size: {img_size_target}")
+        logger.info(f"Number of channels: {number_of_channels}")
+        logger.info(f"Initial number of filters: {initial_number_of_filters}")
+        logger.info(f"Kernel size: {kernel_size}")
+        logger.info(f"Dropout rate: {dropout_rate}")
 
-        inputLayer = Input((imgSizeTarget, imgSizeTarget, numberOfChannels))
-        outputLayer = build_model(inputLayer, initialNumberOfFilters, kernelSize)
+        inputLayer = Input((img_size_target, img_size_target, number_of_channels))
+        outputLayer = build_model(
+            inputLayer, initial_number_of_filters, kernel_size, dropout_rate
+        )
 
         model = Model(inputLayer, outputLayer)
 
@@ -41,27 +55,34 @@ def main():
         ]
 
         model.compile(
-            loss="binary_crossentropy",
+            loss=config["training"]["loss"],
             optimizer=tf.keras.optimizers.Adam(lr=1e-3),
             metrics=METRICS,
         )
 
         early_stop = tf.keras.callbacks.EarlyStopping(
-            patience=30, monitor="val_accuracy", mode="max", restore_best_weights=False
+            patience=config["training"]["early_stop_patience"],
+            monitor=config["training"]["early_stop_monitor"],
+            mode="max",
+            restore_best_weights=True,
         )
 
         checkpoint = tf.keras.callbacks.ModelCheckpoint(
             "currentModel.h5",
-            monitor="val_accuracy",
+            monitor=config["training"]["early_stop_monitor"],
             verbose=0,
             save_best_only=True,
         )
+        logger.info(f"Early stop patience: {config['training']['early_stop_patience']}")
+        logger.info(f"Early stop monitor: {config['training']['early_stop_monitor']}")
 
         # Callbacks list for Keras
         callbacks_list = [early_stop, checkpoint]
 
-        BATCH_SIZE = 256
-        EPOCHS = 2000
+        BATCH_SIZE = config["training"]["batch_size"]
+        EPOCHS = config["training"]["epochs"]
+        logger.info(f"Batch size: {BATCH_SIZE}")
+        logger.info(f"Epochs: {EPOCHS}")
 
         history = model.fit(
             x_train,
@@ -73,9 +94,20 @@ def main():
             verbose=1,
         )
 
-        log_test_metrics_and_history(x_test, y_test, model, history)
+        logger.info("Training complete")
 
-        mlflow.log_artifact(script_dir.joinpath("train.log"))
+        log_test_metrics_and_history(x_test, y_test, model, history)
+        logger.info("Test metrics logged")
+
+        mlflow.log_artifact(script_dir.joinpath("outputs/train.log"))
+        mlflow.log_artifact(f"{root_path}/outputs/.hydra/config.yaml")
+
+        logger.info(f"Trying to remove outputs directory: {root_path}/outputs")
+        try:
+            shutil.rmtree(f"{root_path}/outputs")
+        except:
+            logger.error("Could not remove outputs folder")
+            pass
 
 
 def log_test_metrics_and_history(x_test, y_test, model, history):
@@ -101,16 +133,26 @@ def log_test_metrics_and_history(x_test, y_test, model, history):
     test_metrics["test_f1_score"] = f1_score
     mlflow.log_metrics(test_metrics)
 
-    dump(history.history, open(f"processed_data/training_history.pkl", "wb"))
-    mlflow.log_artifact(f"processed_data/training_history.pkl")
+    data_path = f"{root_path}/processed_data/"
+
+    dump(history.history, open(f"{data_path}training_history.pkl", "wb"))
+    mlflow.log_artifact(f"{data_path}training_history.pkl")
 
 
-def load_processed_data():
+def load_processed_data(config: DictConfig):
 
-    data_path = "processed_data/"
+    global root_path
+    root_path = hydra.utils.get_original_cwd()
+    data_path = f"{root_path}/processed_data/"
 
-    x_train = np.load(data_path + "x_train_augmented.npy")
-    y_train = np.load(data_path + "y_train_augmented.npy")
+    if config["augmentation"]["use"] is True:
+        logger.info("Loading augmented data")
+        x_train = np.load(data_path + "x_train_augmented.npy")
+        y_train = np.load(data_path + "y_train_augmented.npy")
+    else:
+        logger.info("Loading non-augmented data")
+        x_train = np.load(data_path + "x_train_sampled.npy")
+        y_train = np.load(data_path + "y_train_sampled.npy")
     x_val = np.load(data_path + "x_val_sampled.npy")
     y_val = np.load(data_path + "y_val_sampled.npy")
     x_test = np.load(data_path + "x_test_sampled.npy")
@@ -129,8 +171,10 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(asctime)s %(message)s",
         datefmt="%d-%m-%Y %H:%M:%S",
-        filename=script_dir.joinpath("train.log"),
-        filemode="w",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(filename="train.log", mode="w"),
+        ],
     )
     logger = logging.getLogger(__name__)
 

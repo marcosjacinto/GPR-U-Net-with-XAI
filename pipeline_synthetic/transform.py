@@ -2,12 +2,15 @@ import logging
 from pathlib import Path
 from pickle import dump
 
+import hydra
 import mlflow
 import numpy as np
+from omegaconf import DictConfig
 from sklearn import preprocessing
 
 
-def main():
+@hydra.main(config_name="config")
+def main(config: DictConfig):
 
     logger.info("Loading x training and test data")
     x_train = np.load(output_path.joinpath("x_train_chunks.npy"))
@@ -18,7 +21,8 @@ def main():
 
     logger.info("Fitting and transforming x training and then applying to test data")
     transformer = preprocessing.PowerTransformer(method="yeo-johnson")
-    scaler = preprocessing.MinMaxScaler()
+    scaler = preprocessing.MinMaxScaler(feature_range=(-1, 1))
+    logger.info("Using MinMaxScaler with feature range -1, 1")
 
     reshaped_x_train = x_train.reshape(-1, x_train_original_shape[-1])
     x_train = transformer.fit_transform(reshaped_x_train)
@@ -55,10 +59,12 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(asctime)s %(message)s",
         datefmt="%d-%m-%Y %H:%M:%S",
-        filename=script_dir.joinpath("transform.log"),
-        filemode="w",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(filename="transform.log", mode="w"),
+        ],
     )
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("transform.log"))
+    mlflow.log_artifact(script_dir.joinpath("outputs/transform.log"))

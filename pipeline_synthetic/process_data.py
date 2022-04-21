@@ -1,15 +1,19 @@
 import logging
 from pathlib import Path
 
+import hydra
 import mlflow
 import numpy as np
+from omegaconf import DictConfig
 
 from gpr_unet import load_data, utils
 
 
-def main():
+@hydra.main(config_path=".", config_name="config.yaml")
+def main(config: DictConfig):
 
-    raw_data_path = "raw_data"
+    root_path = hydra.utils.get_original_cwd()
+    raw_data_path = f"{root_path}/raw_data"
 
     logger.info("Loading data and converting to numpy arrays")
     gpr = load_data.gpr_data_to_numpy(f"{raw_data_path}/gpr.sgy")
@@ -20,7 +24,7 @@ def main():
     hilbert = load_data.gpr_data_to_numpy(f"{raw_data_path}/gpr_HilbertTrace.sgy")
     logger.info("Data loaded")
 
-    sample_size = 16  # FIXME: This should be a parameter in config
+    sample_size = config["sampling"]["sample_size"]
 
     logger.info(
         "Clipping the GPR section to a format divisible by the sample size: %s",
@@ -71,10 +75,12 @@ if __name__ == "__main__":
         level=logging.INFO,
         format="%(asctime)s %(message)s",
         datefmt="%d-%m-%Y %H:%M:%S",
-        filename=script_dir.joinpath("process_data.log"),
-        filemode="w",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(filename="process_data.log", mode="w"),
+        ],
     )
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("process_data.log"))
+    mlflow.log_artifact(script_dir.joinpath("outputs/process_data.log"))
