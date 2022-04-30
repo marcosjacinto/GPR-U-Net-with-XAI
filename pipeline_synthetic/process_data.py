@@ -30,19 +30,20 @@ def main(config: DictConfig):
         "Clipping the GPR section to a format divisible by the sample size: %s",
         sample_size,
     )
+
+    initial_number_of_rows = gpr.shape[0]
     gpr = utils.clip(gpr, sample_size)
-    number_of_rows = gpr.shape[0]
 
     logger.info("Padding and clipping data attributes to the same size")
-    similarity = load_data.pad_attribute(similarity, number_of_rows)
+    similarity = load_data.pad_attribute(similarity, initial_number_of_rows)
     similarity = utils.clip(similarity, sample_size)
-    energy = load_data.pad_attribute(energy, number_of_rows)
+    energy = load_data.pad_attribute(energy, initial_number_of_rows)
     energy = utils.clip(energy, sample_size)
-    inst_freq = load_data.pad_attribute(inst_freq, number_of_rows)
+    inst_freq = load_data.pad_attribute(inst_freq, initial_number_of_rows)
     inst_freq = utils.clip(inst_freq, sample_size)
-    inst_phase = load_data.pad_attribute(inst_phase, number_of_rows)
+    inst_phase = load_data.pad_attribute(inst_phase, initial_number_of_rows)
     inst_phase = utils.clip(inst_phase, sample_size)
-    hilbert = load_data.pad_attribute(hilbert, number_of_rows)
+    hilbert = load_data.pad_attribute(hilbert, initial_number_of_rows)
     hilbert = utils.clip(hilbert, sample_size)
 
     logger.info("Calculating the Hilbert Trace/Similarity")

@@ -28,7 +28,10 @@ def main(config: DictConfig):
 
     logger.info("Creating validation set from training set")
     x_train, x_val, y_train, y_val = model_selection.train_test_split(
-        x_train, y_train, test_size=0.15, random_state=42
+        x_train,
+        y_train,
+        test_size=0.15,
+        random_state=config["sampling"]["random_state"],
     )
 
     logger.info("Saving sampled data to disk")
