@@ -53,7 +53,7 @@ def gpr_data_to_numpy(file_path: str) -> np.ndarray:
         array = segy_to_numpy(segy_file)
         return array
     elif file_path.endswith(".dat"):
-        array = np.genfromtxt(file_path)
+        array = np.genfromtxt(file_path).T
         return array
 
 
