@@ -51,6 +51,9 @@ if __name__ == "__main__":
 
     script_dir = Path(__file__).parent.absolute()
     output_path = script_dir.joinpath("processed_data/")
+    root_path = script_dir.parent.absolute()
+
+    mlflow.set_tracking_uri(f"{root_path}/mlruns")
 
     # configure logging
     logging.basicConfig(
@@ -65,4 +68,4 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("outputs/augment.log"))
+    mlflow.log_artifact("augment.log")

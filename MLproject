@@ -1,0 +1,28 @@
+name: gpr pipelines
+
+entry_points:
+  pipeline:
+    parameters:
+      hydra_options:
+        description: Hydra parameters to override
+        type: str
+        default: ""
+    command: "python pipeline/process_data.py $(echo {hydra_options}) && \
+      python pipeline/transform.py $(echo {hydra_options}) && \
+      python pipeline/sample_data.py $(echo {hydra_options}) && \
+      python pipeline/augment.py $(echo {hydra_options}) && \
+      python pipeline/train.py $(echo {hydra_options})"
+
+  pipeline_synthetic:
+    parameters:
+      hydra_options:
+        description: Hydra parameters to override
+        type: str
+        default: ""
+    command:
+      "python pipeline_synthetic/process_data.py $(echo {hydra_options}) && \
+      python pipeline_synthetic/segregate.py $(echo {hydra_options}) && \
+      python pipeline_synthetic/transform.py $(echo {hydra_options}) && \
+      python pipeline_synthetic/sample_data.py $(echo {hydra_options}) && \
+      python pipeline_synthetic/augment.py $(echo {hydra_options}) && \
+      python pipeline_synthetic/train.py $(echo {hydra_options})"

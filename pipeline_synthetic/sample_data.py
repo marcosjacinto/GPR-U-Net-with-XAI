@@ -31,7 +31,7 @@ def main(config: DictConfig):
         x_train,
         y_train,
         test_size=0.15,
-        random_state=config["sampling"]["random_state"],
+        random_state=config["segregate"]["random_seed"],
     )
 
     logger.info("Saving sampled data to disk")
@@ -61,4 +61,4 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("outputs/sample_data.log"))
+    mlflow.log_artifact("sample_data.log")

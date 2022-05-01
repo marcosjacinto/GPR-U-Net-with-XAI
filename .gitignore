@@ -5,5 +5,7 @@ __pycache__
 .venv
 *.log
 *.pkl
-#mlruns/
+mlruns/
 .vscode/
+outputs/
+*.h5

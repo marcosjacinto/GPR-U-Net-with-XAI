@@ -18,7 +18,7 @@ def main(config: DictConfig):
 
     with mlflow.start_run(nested=True):
 
-        mlflow.tensorflow.autolog()
+        mlflow.tensorflow.autolog(log_models=True)
 
         x_train, y_train, x_val, y_val, x_test, y_test = load_processed_data(config)
 
@@ -99,15 +99,8 @@ def main(config: DictConfig):
         log_test_metrics_and_history(x_test, y_test, model, history)
         logger.info("Test metrics logged")
 
-        mlflow.log_artifact(script_dir.joinpath("outputs/train.log"))
-        mlflow.log_artifact(f"{root_path}/outputs/.hydra/config.yaml")
-
-        logger.info(f"Trying to remove outputs directory: {root_path}/outputs")
-        try:
-            shutil.rmtree(f"{root_path}/outputs")
-        except:
-            logger.error("Could not remove outputs folder")
-            pass
+        mlflow.log_artifact("train.log")
+        mlflow.log_artifact(script_dir / "outputs/config.yaml")
 
 
 def log_test_metrics_and_history(x_test, y_test, model, history):
@@ -133,30 +126,25 @@ def log_test_metrics_and_history(x_test, y_test, model, history):
     test_metrics["test_f1_score"] = f1_score
     mlflow.log_metrics(test_metrics)
 
-    data_path = f"{root_path}/processed_data/"
-
-    dump(history.history, open(f"{data_path}training_history.pkl", "wb"))
-    mlflow.log_artifact(f"{data_path}training_history.pkl")
+    dump(history.history, open(output_path / "training_history.pkl", "wb"))
+    mlflow.log_artifact(output_path / "training_history.pkl")
 
 
 def load_processed_data(config: DictConfig):
 
-    global root_path
-    root_path = hydra.utils.get_original_cwd()
-    data_path = f"{root_path}/processed_data/"
-
     if config["augmentation"]["use"] is True:
         logger.info("Loading augmented data")
-        x_train = np.load(data_path + "x_train_augmented.npy")
-        y_train = np.load(data_path + "y_train_augmented.npy")
+        x_train = np.load(output_path / "x_train_augmented.npy")
+        y_train = np.load(output_path / "y_train_augmented.npy")
     else:
         logger.info("Loading non-augmented data")
-        x_train = np.load(data_path + "x_train_sampled.npy")
-        y_train = np.load(data_path + "y_train_sampled.npy")
-    x_val = np.load(data_path + "x_val_sampled.npy")
-    y_val = np.load(data_path + "y_val_sampled.npy")
-    x_test = np.load(data_path + "x_test_sampled.npy")
-    y_test = np.load(data_path + "y_test_sampled.npy")
+        x_train = np.load(output_path / "x_train_sampled.npy")
+        y_train = np.load(output_path / "y_train_sampled.npy")
+
+    x_val = np.load(output_path / "x_val_sampled.npy")
+    y_val = np.load(output_path / "y_val_sampled.npy")
+    x_test = np.load(output_path / "x_test_sampled.npy")
+    y_test = np.load(output_path / "y_test_sampled.npy")
 
     return x_train, y_train, x_val, y_val, x_test, y_test
 
@@ -179,3 +167,10 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     main()
+
+    try:
+        logger.info(f"Trying to remove outputs directory: {script_dir}/outputs")
+        shutil.rmtree(script_dir / "outputs")
+    except:
+        logger.error("Could not remove outputs folder")
+        pass

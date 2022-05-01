@@ -99,16 +99,11 @@ def main(config: DictConfig):
 
 if __name__ == "__main__":
 
-    year = datetime.datetime.now().year
-    month = datetime.datetime.now().month
-    day = datetime.datetime.now().day
-    hour = datetime.datetime.now().hour
-    minute = datetime.datetime.now().minute
-    experiment_name = f"{year}-{month}-{day}-{hour}-{minute}"
-    mlflow.start_run(run_name=experiment_name, nested=True)
-
     script_dir = Path(__file__).parent.absolute()
     output_path = script_dir.joinpath("processed_data/")
+    root_path = script_dir.parent.absolute()
+
+    mlflow.set_tracking_uri(f"{root_path}/mlruns")
 
     # configure logging
     logging.basicConfig(
@@ -123,4 +118,4 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("outputs/process_data.log"))
+    mlflow.log_artifact("process_data.log")

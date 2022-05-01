@@ -114,4 +114,4 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("outputs/segregate.log"))
+    mlflow.log_artifact("segregate.log")

@@ -12,8 +12,7 @@ from gpr_unet import load_data, utils
 @hydra.main(config_path=".", config_name="config.yaml")
 def main(config: DictConfig):
 
-    root_path = hydra.utils.get_original_cwd()
-    raw_data_path = f"{root_path}/raw_data"
+    raw_data_path = script_dir / "raw_data"
 
     logger.info("Loading data and converting to numpy arrays")
     gpr = load_data.gpr_data_to_numpy(f"{raw_data_path}/gpr.sgy")
@@ -84,4 +83,4 @@ if __name__ == "__main__":
     logger = logging.getLogger(__name__)
 
     main()
-    mlflow.log_artifact(script_dir.joinpath("outputs/process_data.log"))
+    mlflow.log_artifact("process_data.log")
