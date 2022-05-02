@@ -87,6 +87,11 @@ def main(config: DictConfig):
         img_size_target = x_train.shape[1]
         number_of_channels = x_train.shape[-1]
 
+        mlflow.log_param("img_size_target", img_size_target)
+        mlflow.log_param("number_of_channels", number_of_channels)
+        mlflow.log_param("initial_number_of_filters", initial_number_of_filters)
+        mlflow.log_param("kernel_size", kernel_size)
+
         dropout_rate = config["training"]["dropout_rate"]
         logger.info(f"Image size: {img_size_target}")
         logger.info(f"Number of channels: {number_of_channels}")
