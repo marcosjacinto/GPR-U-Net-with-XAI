@@ -1,0 +1,13 @@
+[2022-05-02 14:16:02,708][__main__][INFO] - Loading non-augmented data
+[2022-05-02 14:16:02,835][__main__][INFO] - Image size: 32
+[2022-05-02 14:16:02,835][__main__][INFO] - Number of channels: 6
+[2022-05-02 14:16:02,835][__main__][INFO] - Initial number of filters: 8
+[2022-05-02 14:16:02,836][__main__][INFO] - Kernel size: (5, 5)
+[2022-05-02 14:16:02,836][__main__][INFO] - Dropout rate: 0.5
+[2022-05-02 14:16:03,888][__main__][INFO] - Early stop patience: 30
+[2022-05-02 14:16:03,888][__main__][INFO] - Early stop monitor: val_accuracy
+[2022-05-02 14:16:03,888][__main__][INFO] - Batch size: 256
+[2022-05-02 14:16:03,889][__main__][INFO] - Epochs: 400
+[2022-05-02 14:21:35,360][tensorflow][INFO] - Assets written to: /tmp/tmp5ot18uhs/model/data/model/assets
+[2022-05-02 14:21:44,459][__main__][INFO] - Training complete
+[2022-05-02 14:21:45,844][__main__][INFO] - Test metrics logged

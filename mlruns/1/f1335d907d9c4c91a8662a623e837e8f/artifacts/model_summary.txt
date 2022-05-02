@@ -1,0 +1,97 @@
+Model: "model_1"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_2 (InputLayer)           [(None, 32, 32, 1)]  0           []                               
+                                                                                                  
+ conv2d_19 (Conv2D)             (None, 32, 32, 8)    208         ['input_2[0][0]']                
+                                                                                                  
+ conv2d_20 (Conv2D)             (None, 32, 32, 8)    1608        ['conv2d_19[0][0]']              
+                                                                                                  
+ max_pooling2d_4 (MaxPooling2D)  (None, 16, 16, 8)   0           ['conv2d_20[0][0]']              
+                                                                                                  
+ dropout_8 (Dropout)            (None, 16, 16, 8)    0           ['max_pooling2d_4[0][0]']        
+                                                                                                  
+ conv2d_21 (Conv2D)             (None, 16, 16, 16)   3216        ['dropout_8[0][0]']              
+                                                                                                  
+ conv2d_22 (Conv2D)             (None, 16, 16, 16)   6416        ['conv2d_21[0][0]']              
+                                                                                                  
+ max_pooling2d_5 (MaxPooling2D)  (None, 8, 8, 16)    0           ['conv2d_22[0][0]']              
+                                                                                                  
+ dropout_9 (Dropout)            (None, 8, 8, 16)     0           ['max_pooling2d_5[0][0]']        
+                                                                                                  
+ conv2d_23 (Conv2D)             (None, 8, 8, 32)     12832       ['dropout_9[0][0]']              
+                                                                                                  
+ conv2d_24 (Conv2D)             (None, 8, 8, 32)     25632       ['conv2d_23[0][0]']              
+                                                                                                  
+ max_pooling2d_6 (MaxPooling2D)  (None, 4, 4, 32)    0           ['conv2d_24[0][0]']              
+                                                                                                  
+ dropout_10 (Dropout)           (None, 4, 4, 32)     0           ['max_pooling2d_6[0][0]']        
+                                                                                                  
+ conv2d_25 (Conv2D)             (None, 4, 4, 64)     51264       ['dropout_10[0][0]']             
+                                                                                                  
+ conv2d_26 (Conv2D)             (None, 4, 4, 64)     102464      ['conv2d_25[0][0]']              
+                                                                                                  
+ max_pooling2d_7 (MaxPooling2D)  (None, 2, 2, 64)    0           ['conv2d_26[0][0]']              
+                                                                                                  
+ dropout_11 (Dropout)           (None, 2, 2, 64)     0           ['max_pooling2d_7[0][0]']        
+                                                                                                  
+ conv2d_27 (Conv2D)             (None, 2, 2, 128)    204928      ['dropout_11[0][0]']             
+                                                                                                  
+ conv2d_28 (Conv2D)             (None, 2, 2, 128)    409728      ['conv2d_27[0][0]']              
+                                                                                                  
+ conv2d_transpose_4 (Conv2DTran  (None, 4, 4, 64)    204864      ['conv2d_28[0][0]']              
+ spose)                                                                                           
+                                                                                                  
+ concatenate_4 (Concatenate)    (None, 4, 4, 128)    0           ['conv2d_transpose_4[0][0]',     
+                                                                  'conv2d_26[0][0]']              
+                                                                                                  
+ dropout_12 (Dropout)           (None, 4, 4, 128)    0           ['concatenate_4[0][0]']          
+                                                                                                  
+ conv2d_29 (Conv2D)             (None, 4, 4, 64)     204864      ['dropout_12[0][0]']             
+                                                                                                  
+ conv2d_30 (Conv2D)             (None, 4, 4, 64)     102464      ['conv2d_29[0][0]']              
+                                                                                                  
+ conv2d_transpose_5 (Conv2DTran  (None, 8, 8, 32)    51232       ['conv2d_30[0][0]']              
+ spose)                                                                                           
+                                                                                                  
+ concatenate_5 (Concatenate)    (None, 8, 8, 64)     0           ['conv2d_transpose_5[0][0]',     
+                                                                  'conv2d_24[0][0]']              
+                                                                                                  
+ dropout_13 (Dropout)           (None, 8, 8, 64)     0           ['concatenate_5[0][0]']          
+                                                                                                  
+ conv2d_31 (Conv2D)             (None, 8, 8, 32)     51232       ['dropout_13[0][0]']             
+                                                                                                  
+ conv2d_32 (Conv2D)             (None, 8, 8, 32)     25632       ['conv2d_31[0][0]']              
+                                                                                                  
+ conv2d_transpose_6 (Conv2DTran  (None, 16, 16, 16)  12816       ['conv2d_32[0][0]']              
+ spose)                                                                                           
+                                                                                                  
+ concatenate_6 (Concatenate)    (None, 16, 16, 32)   0           ['conv2d_transpose_6[0][0]',     
+                                                                  'conv2d_22[0][0]']              
+                                                                                                  
+ dropout_14 (Dropout)           (None, 16, 16, 32)   0           ['concatenate_6[0][0]']          
+                                                                                                  
+ conv2d_33 (Conv2D)             (None, 16, 16, 16)   12816       ['dropout_14[0][0]']             
+                                                                                                  
+ conv2d_34 (Conv2D)             (None, 16, 16, 16)   6416        ['conv2d_33[0][0]']              
+                                                                                                  
+ conv2d_transpose_7 (Conv2DTran  (None, 32, 32, 8)   3208        ['conv2d_34[0][0]']              
+ spose)                                                                                           
+                                                                                                  
+ concatenate_7 (Concatenate)    (None, 32, 32, 16)   0           ['conv2d_transpose_7[0][0]',     
+                                                                  'conv2d_20[0][0]']              
+                                                                                                  
+ dropout_15 (Dropout)           (None, 32, 32, 16)   0           ['concatenate_7[0][0]']          
+                                                                                                  
+ conv2d_35 (Conv2D)             (None, 32, 32, 8)    3208        ['dropout_15[0][0]']             
+                                                                                                  
+ conv2d_36 (Conv2D)             (None, 32, 32, 8)    1608        ['conv2d_35[0][0]']              
+                                                                                                  
+ conv2d_37 (Conv2D)             (None, 32, 32, 1)    9           ['conv2d_36[0][0]']              
+                                                                                                  
+==================================================================================================
+Total params: 1,498,665
+Trainable params: 1,498,665
+Non-trainable params: 0
+__________________________________________________________________________________________________

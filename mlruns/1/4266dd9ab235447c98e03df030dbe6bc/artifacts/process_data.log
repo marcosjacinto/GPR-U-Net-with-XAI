@@ -1,0 +1,88 @@
+[2022-05-01 23:08:31,447][__main__][INFO] - Processing section 89
+[2022-05-01 23:08:31,447][__main__][INFO] - Loading data and converting to numpy arrays
+[2022-05-01 23:08:34,732][__main__][INFO] - Clipping the GPR section to a format divisible by the sample size: 16
+[2022-05-01 23:08:34,732][__main__][INFO] - GPR shape: (928, 944)
+[2022-05-01 23:08:34,733][__main__][INFO] - Padding and clipping data attributes to the same size
+[2022-05-01 23:08:34,738][__main__][INFO] - Calculating the Hilbert Trace/Similarity
+[2022-05-01 23:08:34,748][__main__][INFO] - Loading the ground truth and clipping it
+[2022-05-01 23:08:34,804][__main__][INFO] - Concatenating data into a single array
+[2022-05-01 23:08:34,834][__main__][INFO] - Saving data to disk
+[2022-05-01 23:08:34,834][__main__][INFO] - X shape: (928, 944, 6)
+[2022-05-01 23:08:34,834][__main__][INFO] - Y shape: (928, 944)
+[2022-05-01 23:08:34,871][__main__][INFO] - Processing section 90
+[2022-05-01 23:08:34,871][__main__][INFO] - Loading data and converting to numpy arrays
+[2022-05-01 23:08:41,213][__main__][INFO] - Clipping the GPR section to a format divisible by the sample size: 16
+[2022-05-01 23:08:41,214][__main__][INFO] - GPR shape: (928, 1632)
+[2022-05-01 23:08:41,214][__main__][INFO] - Padding and clipping data attributes to the same size
+[2022-05-01 23:08:41,222][__main__][INFO] - Calculating the Hilbert Trace/Similarity
+[2022-05-01 23:08:41,237][__main__][INFO] - Loading the ground truth and clipping it
+[2022-05-01 23:08:41,296][__main__][INFO] - Concatenating data into a single array
+[2022-05-01 23:08:41,367][__main__][INFO] - Saving data to disk
+[2022-05-01 23:08:41,367][__main__][INFO] - X shape: (928, 1632, 6)
+[2022-05-01 23:08:41,367][__main__][INFO] - Y shape: (928, 1632)
+[2022-05-01 23:08:41,502][__main__][INFO] - Processing section 91
+[2022-05-01 23:08:41,502][__main__][INFO] - Loading data and converting to numpy arrays
+[2022-05-01 23:08:46,425][__main__][INFO] - Clipping the GPR section to a format divisible by the sample size: 16
+[2022-05-01 23:08:46,425][__main__][INFO] - GPR shape: (928, 1344)
+[2022-05-01 23:08:46,425][__main__][INFO] - Padding and clipping data attributes to the same size
+[2022-05-01 23:08:46,431][__main__][INFO] - Calculating the Hilbert Trace/Similarity
+[2022-05-01 23:08:46,443][__main__][INFO] - Loading the ground truth and clipping it
+[2022-05-01 23:08:46,476][__main__][INFO] - Concatenating data into a single array
+[2022-05-01 23:08:46,530][__main__][INFO] - Saving data to disk
+[2022-05-01 23:08:46,530][__main__][INFO] - X shape: (928, 1344, 6)
+[2022-05-01 23:08:46,531][__main__][INFO] - Y shape: (928, 1344)
+[2022-05-01 23:08:46,619][__main__][INFO] - Processing section 92
+[2022-05-01 23:08:46,619][__main__][INFO] - Loading data and converting to numpy arrays
+[2022-05-01 23:08:55,204][__main__][INFO] - Clipping the GPR section to a format divisible by the sample size: 16
+[2022-05-01 23:08:55,204][__main__][INFO] - GPR shape: (928, 2240)
+[2022-05-01 23:08:55,204][__main__][INFO] - Padding and clipping data attributes to the same size
+[2022-05-01 23:08:55,213][__main__][INFO] - Calculating the Hilbert Trace/Similarity
+[2022-05-01 23:08:55,229][__main__][INFO] - Loading the ground truth and clipping it
+[2022-05-01 23:08:55,283][__main__][INFO] - Concatenating data into a single array
+[2022-05-01 23:08:55,373][__main__][INFO] - Saving data to disk
+[2022-05-01 23:08:55,373][__main__][INFO] - X shape: (928, 2240, 6)
+[2022-05-01 23:08:55,374][__main__][INFO] - Y shape: (928, 2240)
+[2022-05-01 23:08:55,573][__main__][INFO] - Processing section 93
+[2022-05-01 23:08:55,573][__main__][INFO] - Loading data and converting to numpy arrays
+[2022-05-01 23:08:57,377][__main__][INFO] - Clipping the GPR section to a format divisible by the sample size: 16
+[2022-05-01 23:08:57,377][__main__][INFO] - GPR shape: (928, 544)
+[2022-05-01 23:08:57,378][__main__][INFO] - Padding and clipping data attributes to the same size
+[2022-05-01 23:08:57,381][__main__][INFO] - Calculating the Hilbert Trace/Similarity
+[2022-05-01 23:08:57,386][__main__][INFO] - Loading the ground truth and clipping it
+[2022-05-01 23:08:57,481][__main__][INFO] - Concatenating data into a single array
+[2022-05-01 23:08:57,496][__main__][INFO] - Saving data to disk
+[2022-05-01 23:08:57,497][__main__][INFO] - X shape: (928, 544, 6)
+[2022-05-01 23:08:57,497][__main__][INFO] - Y shape: (928, 544)
+[2022-05-01 23:08:57,529][__main__][INFO] - Processing section 94
+[2022-05-01 23:08:57,530][__main__][INFO] - Loading data and converting to numpy arrays
+[2022-05-01 23:09:01,539][__main__][INFO] - Clipping the GPR section to a format divisible by the sample size: 16
+[2022-05-01 23:09:01,539][__main__][INFO] - GPR shape: (928, 1184)
+[2022-05-01 23:09:01,539][__main__][INFO] - Padding and clipping data attributes to the same size
+[2022-05-01 23:09:01,543][__main__][INFO] - Calculating the Hilbert Trace/Similarity
+[2022-05-01 23:09:01,554][__main__][INFO] - Loading the ground truth and clipping it
+[2022-05-01 23:09:01,581][__main__][INFO] - Concatenating data into a single array
+[2022-05-01 23:09:01,624][__main__][INFO] - Saving data to disk
+[2022-05-01 23:09:01,624][__main__][INFO] - X shape: (928, 1184, 6)
+[2022-05-01 23:09:01,624][__main__][INFO] - Y shape: (928, 1184)
+[2022-05-01 23:09:01,696][__main__][INFO] - Processing section 95
+[2022-05-01 23:09:01,696][__main__][INFO] - Loading data and converting to numpy arrays
+[2022-05-01 23:09:04,804][__main__][INFO] - Clipping the GPR section to a format divisible by the sample size: 16
+[2022-05-01 23:09:04,804][__main__][INFO] - GPR shape: (928, 896)
+[2022-05-01 23:09:04,804][__main__][INFO] - Padding and clipping data attributes to the same size
+[2022-05-01 23:09:04,810][__main__][INFO] - Calculating the Hilbert Trace/Similarity
+[2022-05-01 23:09:04,818][__main__][INFO] - Loading the ground truth and clipping it
+[2022-05-01 23:09:04,838][__main__][INFO] - Concatenating data into a single array
+[2022-05-01 23:09:04,875][__main__][INFO] - Saving data to disk
+[2022-05-01 23:09:04,875][__main__][INFO] - X shape: (928, 896, 6)
+[2022-05-01 23:09:04,875][__main__][INFO] - Y shape: (928, 896)
+[2022-05-01 23:09:04,944][__main__][INFO] - Processing section 96
+[2022-05-01 23:09:04,944][__main__][INFO] - Loading data and converting to numpy arrays
+[2022-05-01 23:09:15,199][__main__][INFO] - Clipping the GPR section to a format divisible by the sample size: 16
+[2022-05-01 23:09:15,200][__main__][INFO] - GPR shape: (928, 2656)
+[2022-05-01 23:09:15,200][__main__][INFO] - Padding and clipping data attributes to the same size
+[2022-05-01 23:09:15,210][__main__][INFO] - Calculating the Hilbert Trace/Similarity
+[2022-05-01 23:09:15,233][__main__][INFO] - Loading the ground truth and clipping it
+[2022-05-01 23:09:15,291][__main__][INFO] - Concatenating data into a single array
+[2022-05-01 23:09:15,411][__main__][INFO] - Saving data to disk
+[2022-05-01 23:09:15,411][__main__][INFO] - X shape: (928, 2656, 6)
+[2022-05-01 23:09:15,411][__main__][INFO] - Y shape: (928, 2656)

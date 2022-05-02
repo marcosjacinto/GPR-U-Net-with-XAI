@@ -1,0 +1,82 @@
+[2022-05-01 23:11:20,410][__main__][INFO] - Early stop patience: 30
+[2022-05-01 23:11:20,410][__main__][INFO] - Early stop monitor: val_accuracy
+[2022-05-01 23:11:20,411][__main__][INFO] - Batch size: 1024
+[2022-05-01 23:11:20,411][__main__][INFO] - Epochs: 400
+[2022-05-01 23:11:20,416][__main__][INFO] - Loading augmented data
+[2022-05-01 23:11:21,226][__main__][INFO] - Running attribute 0
+[2022-05-01 23:11:21,227][__main__][INFO] - Training samples: 144942
+[2022-05-01 23:11:21,227][__main__][INFO] - Validation samples: 4263
+[2022-05-01 23:11:21,227][__main__][INFO] - Test samples: 13050
+[2022-05-01 23:11:21,227][__main__][INFO] - Image size: 16
+[2022-05-01 23:11:21,227][__main__][INFO] - Number of channels: 1
+[2022-05-01 23:11:21,227][__main__][INFO] - Initial number of filters: 8
+[2022-05-01 23:11:21,227][__main__][INFO] - Kernel size: (7, 7)
+[2022-05-01 23:11:21,227][__main__][INFO] - Dropout rate: 0.5
+[2022-05-01 23:25:09,282][tensorflow][INFO] - Assets written to: /tmp/tmpmfacp72s/model/data/model/assets
+[2022-05-01 23:25:17,541][__main__][INFO] - Training complete
+[2022-05-01 23:25:22,747][__main__][INFO] - Test metrics logged
+[2022-05-01 23:25:23,072][__main__][INFO] - Loading augmented data
+[2022-05-01 23:25:29,761][__main__][INFO] - Running attribute 1
+[2022-05-01 23:25:29,761][__main__][INFO] - Training samples: 144942
+[2022-05-01 23:25:29,761][__main__][INFO] - Validation samples: 4263
+[2022-05-01 23:25:29,761][__main__][INFO] - Test samples: 13050
+[2022-05-01 23:25:29,762][__main__][INFO] - Image size: 16
+[2022-05-01 23:25:29,762][__main__][INFO] - Number of channels: 1
+[2022-05-01 23:25:29,762][__main__][INFO] - Initial number of filters: 8
+[2022-05-01 23:25:29,762][__main__][INFO] - Kernel size: (7, 7)
+[2022-05-01 23:25:29,762][__main__][INFO] - Dropout rate: 0.5
+[2022-05-01 23:31:24,902][tensorflow][INFO] - Assets written to: /tmp/tmpclkk79wg/model/data/model/assets
+[2022-05-01 23:31:34,061][__main__][INFO] - Training complete
+[2022-05-01 23:31:37,842][__main__][INFO] - Test metrics logged
+[2022-05-01 23:31:37,857][__main__][INFO] - Loading augmented data
+[2022-05-01 23:31:43,002][__main__][INFO] - Running attribute 2
+[2022-05-01 23:31:43,003][__main__][INFO] - Training samples: 144942
+[2022-05-01 23:31:43,003][__main__][INFO] - Validation samples: 4263
+[2022-05-01 23:31:43,003][__main__][INFO] - Test samples: 13050
+[2022-05-01 23:31:43,003][__main__][INFO] - Image size: 16
+[2022-05-01 23:31:43,003][__main__][INFO] - Number of channels: 1
+[2022-05-01 23:31:43,003][__main__][INFO] - Initial number of filters: 8
+[2022-05-01 23:31:43,003][__main__][INFO] - Kernel size: (7, 7)
+[2022-05-01 23:31:43,003][__main__][INFO] - Dropout rate: 0.5
+[2022-05-01 23:47:13,000][tensorflow][INFO] - Assets written to: /tmp/tmp0r6rfj49/model/data/model/assets
+[2022-05-01 23:47:21,925][__main__][INFO] - Training complete
+[2022-05-01 23:47:25,359][__main__][INFO] - Test metrics logged
+[2022-05-01 23:47:25,367][__main__][INFO] - Loading augmented data
+[2022-05-01 23:47:28,144][__main__][INFO] - Running attribute 3
+[2022-05-01 23:47:28,144][__main__][INFO] - Training samples: 144942
+[2022-05-01 23:47:28,144][__main__][INFO] - Validation samples: 4263
+[2022-05-01 23:47:28,145][__main__][INFO] - Test samples: 13050
+[2022-05-01 23:47:28,145][__main__][INFO] - Image size: 16
+[2022-05-01 23:47:28,145][__main__][INFO] - Number of channels: 1
+[2022-05-01 23:47:28,145][__main__][INFO] - Initial number of filters: 8
+[2022-05-01 23:47:28,145][__main__][INFO] - Kernel size: (7, 7)
+[2022-05-01 23:47:28,145][__main__][INFO] - Dropout rate: 0.5
+[2022-05-02 00:02:37,060][tensorflow][INFO] - Assets written to: /tmp/tmpim29i3gc/model/data/model/assets
+[2022-05-02 00:02:48,552][__main__][INFO] - Training complete
+[2022-05-02 00:02:52,056][__main__][INFO] - Test metrics logged
+[2022-05-02 00:02:52,064][__main__][INFO] - Loading augmented data
+[2022-05-02 00:02:53,295][__main__][INFO] - Running attribute 4
+[2022-05-02 00:02:53,295][__main__][INFO] - Training samples: 144942
+[2022-05-02 00:02:53,295][__main__][INFO] - Validation samples: 4263
+[2022-05-02 00:02:53,295][__main__][INFO] - Test samples: 13050
+[2022-05-02 00:02:53,295][__main__][INFO] - Image size: 16
+[2022-05-02 00:02:53,295][__main__][INFO] - Number of channels: 1
+[2022-05-02 00:02:53,295][__main__][INFO] - Initial number of filters: 8
+[2022-05-02 00:02:53,296][__main__][INFO] - Kernel size: (7, 7)
+[2022-05-02 00:02:53,296][__main__][INFO] - Dropout rate: 0.5
+[2022-05-02 00:35:19,988][tensorflow][INFO] - Assets written to: /tmp/tmpti6g3s64/model/data/model/assets
+[2022-05-02 00:35:27,434][__main__][INFO] - Training complete
+[2022-05-02 00:35:31,314][__main__][INFO] - Test metrics logged
+[2022-05-02 00:35:31,325][__main__][INFO] - Loading augmented data
+[2022-05-02 00:35:32,533][__main__][INFO] - Running attribute 5
+[2022-05-02 00:35:32,533][__main__][INFO] - Training samples: 144942
+[2022-05-02 00:35:32,533][__main__][INFO] - Validation samples: 4263
+[2022-05-02 00:35:32,533][__main__][INFO] - Test samples: 13050
+[2022-05-02 00:35:32,533][__main__][INFO] - Image size: 16
+[2022-05-02 00:35:32,533][__main__][INFO] - Number of channels: 1
+[2022-05-02 00:35:32,533][__main__][INFO] - Initial number of filters: 8
+[2022-05-02 00:35:32,533][__main__][INFO] - Kernel size: (7, 7)
+[2022-05-02 00:35:32,534][__main__][INFO] - Dropout rate: 0.5
+[2022-05-02 00:44:28,768][tensorflow][INFO] - Assets written to: /tmp/tmpt94q8wvp/model/data/model/assets
+[2022-05-02 00:44:36,607][__main__][INFO] - Training complete
+[2022-05-02 00:44:40,273][__main__][INFO] - Test metrics logged

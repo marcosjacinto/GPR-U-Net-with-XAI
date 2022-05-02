@@ -1,0 +1,27 @@
+[2022-05-02 15:05:22,615][__main__][INFO] - Using section 90 in the training set
+[2022-05-02 15:05:22,640][__main__][INFO] - Using section 91 in the training set
+[2022-05-02 15:05:22,678][__main__][INFO] - Using section 92 in the training set
+[2022-05-02 15:05:22,689][__main__][INFO] - Using section 93 in the training set
+[2022-05-02 15:05:22,711][__main__][INFO] - Using section 94 in the training set
+[2022-05-02 15:05:22,727][__main__][INFO] - Using section 95 in the training set
+[2022-05-02 15:05:22,856][__main__][INFO] - Fitting and transforming x training
+[2022-05-02 15:05:22,857][__main__][INFO] - Using MinMaxScaler with feature range -1, 1
+[2022-05-02 15:07:01,498][__main__][INFO] - Logging transformer to MLflow
+[2022-05-02 15:07:01,505][__main__][INFO] - Logging scaler to MLflow
+[2022-05-02 15:07:01,506][__main__][INFO] - Applying transformation to training data and test data
+[2022-05-02 15:07:01,506][__main__][INFO] - Transforming data 89
+[2022-05-02 15:07:02,089][__main__][INFO] - Saving transformed data to disk
+[2022-05-02 15:07:02,122][__main__][INFO] - Transforming data 90
+[2022-05-02 15:07:03,128][__main__][INFO] - Saving transformed data to disk
+[2022-05-02 15:07:03,187][__main__][INFO] - Transforming data 91
+[2022-05-02 15:07:04,109][__main__][INFO] - Saving transformed data to disk
+[2022-05-02 15:07:04,164][__main__][INFO] - Transforming data 92
+[2022-05-02 15:07:05,608][__main__][INFO] - Saving transformed data to disk
+[2022-05-02 15:07:05,770][__main__][INFO] - Transforming data 93
+[2022-05-02 15:07:06,222][__main__][INFO] - Saving transformed data to disk
+[2022-05-02 15:07:06,243][__main__][INFO] - Transforming data 94
+[2022-05-02 15:07:07,116][__main__][INFO] - Saving transformed data to disk
+[2022-05-02 15:07:07,167][__main__][INFO] - Transforming data 95
+[2022-05-02 15:07:07,748][__main__][INFO] - Saving transformed data to disk
+[2022-05-02 15:07:07,820][__main__][INFO] - Transforming data 96
+[2022-05-02 15:07:09,528][__main__][INFO] - Saving transformed data to disk

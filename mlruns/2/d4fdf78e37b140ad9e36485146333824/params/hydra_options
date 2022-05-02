@@ -1,0 +1,1 @@
+'training.batch_size=256 augmentation.use=False'
