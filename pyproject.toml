@@ -23,6 +23,7 @@ mypy = "^0.942"
 matplotlib = "^3.5.1"
 prospector = "^1.7.7"
 dvc = {extras = ["gdrive"], version = "^2.10.1"}
+jupyter-http-over-ws = "^0.0.8"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
