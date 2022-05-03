@@ -1,6 +1,0 @@
-[2022-05-02 14:23:08,508][__main__][INFO] - Loading x training and test data
-[2022-05-02 14:23:08,612][__main__][INFO] - Fitting and transforming x training and then applying to test data
-[2022-05-02 14:23:08,612][__main__][INFO] - Using MinMaxScaler with feature range -1, 1
-[2022-05-02 14:24:03,323][__main__][INFO] - Logging transformer to MLflow
-[2022-05-02 14:24:03,330][__main__][INFO] - Logging scaler to MLflow
-[2022-05-02 14:24:03,331][__main__][INFO] - Saving transformed data to disk

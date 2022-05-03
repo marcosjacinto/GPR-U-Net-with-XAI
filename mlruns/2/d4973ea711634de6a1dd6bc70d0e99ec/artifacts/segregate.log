@@ -1,9 +1,0 @@
-[2022-05-02 14:23:05,610][__main__][INFO] - Dividing data into 16-sample chunks
-[2022-05-02 14:23:05,611][__main__][INFO] - Using training size: 12 chunks
-[2022-05-02 14:23:05,611][__main__][INFO] - Randomly selected train samples: {0, 1, 2, 4, 5, 7, 8, 9, 11, 13, 14, 15}
-[2022-05-02 14:23:05,611][__main__][INFO] - Randomly selected test samples: {10, 3, 12, 6}
-[2022-05-02 14:23:05,735][__main__][INFO] - Loaded data from disk
-[2022-05-02 14:23:05,736][__main__][INFO] - X data shape: (1856, 2976, 6)
-[2022-05-02 14:23:05,736][__main__][INFO] - Y data shape: (1856, 2976, 1)
-[2022-05-02 14:23:05,736][__main__][INFO] - Splitting data into training and test sets
-[2022-05-02 14:23:05,870][__main__][INFO] - Data split into training and test sets. Saving to disk

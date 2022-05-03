@@ -1,4 +1,0 @@
-[2022-05-02 14:24:08,712][__main__][INFO] - Loading transformed data and ground truth
-[2022-05-02 14:24:08,792][__main__][INFO] - Augmenting data
-[2022-05-02 14:24:08,792][__main__][INFO] - Inserting noise in training data and using mean: 0.0 and standard deviation: 0.05
-[2022-05-02 14:24:15,152][__main__][INFO] - Saving augmented data to disk
