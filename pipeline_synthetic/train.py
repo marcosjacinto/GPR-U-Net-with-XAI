@@ -36,10 +36,9 @@ def main(config: DictConfig):
         logger.info(f"Kernel size: {kernel_size}")
         logger.info(f"Dropout rate: {dropout_rate}")
 
-        mlflow.log_param("img_size_target", img_size_target)
-        mlflow.log_param("number_of_channels", number_of_channels)
-        mlflow.log_param("initial_number_of_filters", initial_number_of_filters)
-        mlflow.log_param("kernel_size", kernel_size)
+        mlflow.log_params(config["training"])
+        mlflow.log_params(config["augmentation"])
+        mlflow.log_params(config["sampling"])
 
         inputLayer = Input((img_size_target, img_size_target, number_of_channels))
         outputLayer = build_model(
