@@ -5,25 +5,20 @@ description = ""
 authors = ["marcos <marcos.gomesjacinto@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.7.13,<3.10"
+python = "==3.7.13"
+tensorflow = "2.3.0"
 shap = "^0.40.0"
-mlflow = "^1.24.0"
+mlflow = "^1.25.1"
 segyio = "^1.9.9"
 scikit-image = "^0.19.2"
 hydra-core = "^1.1.2"
-tensorflow = "2.7.0"
+dvc = {extras = ["gdrive"], version = "^2.10.2"}
 
 [tool.poetry.dev-dependencies]
-pydocstyle = "^6.1.1"
-isort = "^5.10.1"
-pycodestyle = "^2.8.0"
-jupyterlab = "^3.3.2"
+jupyterlab = "^3.4.0"
 black = "^22.3.0"
-mypy = "^0.942"
-matplotlib = "^3.5.1"
-prospector = "^1.7.7"
-dvc = {extras = ["gdrive"], version = "^2.10.1"}
-jupyter-http-over-ws = "^0.0.8"
+matplotlib = "^3.5.2"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
