@@ -21,6 +21,7 @@ training:
   number_of_filters: 8
   kernel_size: 5
   dropout_rate: 0.5
+  class_weigths: False
 
 hydra:
   output_subdir: pipeline/outputs/

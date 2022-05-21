@@ -1,3 +1,5 @@
+import numpy as np
+from sklearn import utils
 from tensorflow.keras.layers import (
     Conv2D,
     Conv2DTranspose,
@@ -112,3 +114,15 @@ def build_model(input_layer, number_of_filters, kernel_size, dropout_rate=0.5):
     outputLayer = Conv2D(1, (1, 1), padding="same", activation="sigmoid")(uconv1)
 
     return outputLayer
+
+def calculate_class_weigths(y_train):
+
+    y_train = y_train.reshape(-1)
+
+    class_weights = utils.class_weight.compute_class_weight(
+        'balanced',
+        np.unique(y_train),
+        y_train
+        )
+    
+    return class_weights

@@ -8,7 +8,7 @@ import hydra
 import mlflow
 import numpy as np
 import tensorflow as tf
-from gpr_unet.model import build_model
+from gpr_unet.model import build_model, calculate_class_weigths
 from omegaconf import DictConfig
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Input
@@ -111,6 +111,11 @@ def main(config: DictConfig):
             metrics=METRICS,
         )
 
+        if config["training"]["class_weigths"]:
+            class_weights = calculate_class_weigths(y_train)
+        else:
+            class_weights = None
+
         history = model.fit(
             x_train,
             y_train,
@@ -119,6 +124,7 @@ def main(config: DictConfig):
             batch_size=BATCH_SIZE,
             validation_data=(x_val, y_val),
             verbose=1,
+            class_weight=class_weights
         )
 
         logger.info("Training complete")
