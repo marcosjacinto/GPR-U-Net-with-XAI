@@ -1,9 +1,0 @@
-[2022-05-02 15:07:12,492][__main__][INFO] - Creating training and test data
-[2022-05-02 15:07:12,704][__main__][INFO] - Creating validation set from training set
-[2022-05-02 15:07:12,930][__main__][INFO] - Saving sampled data to disk
-[2022-05-02 15:07:14,595][__main__][INFO] - X_train shape: (6039, 32, 32, 6)
-[2022-05-02 15:07:14,596][__main__][INFO] - X_val shape: (1066, 32, 32, 6)
-[2022-05-02 15:07:14,596][__main__][INFO] - X_test shape: (3248, 32, 32, 6)
-[2022-05-02 15:07:14,596][__main__][INFO] - Y_train shape: (6039, 32, 32, 1)
-[2022-05-02 15:07:14,596][__main__][INFO] - Y_val shape: (1066, 32, 32, 1)
-[2022-05-02 15:07:14,596][__main__][INFO] - Y_test shape: (3248, 32, 32, 1)

@@ -1,6 +1,0 @@
-[2022-05-01 21:51:25,474][__main__][INFO] - Loading transformed data and ground truth
-[2022-05-01 21:51:25,593][__main__][INFO] - Augmenting data
-[2022-05-01 21:51:25,594][__main__][INFO] - Inserting noise in training data and using mean: 0.0 and standard deviation: 0.1
-[2022-05-01 21:51:36,070][__main__][INFO] - Saving augmented data to disk
-[2022-05-01 21:51:43,677][__main__][INFO] - X_train_augmented shape: (144942, 16, 16, 6)
-[2022-05-01 21:51:43,737][__main__][INFO] - Y_train_augmented shape: (144942, 16, 16, 1)
