@@ -1,0 +1,28 @@
+paths:
+  raw_data: "pipeline_synthetic/raw_data"
+sampling:
+  sample_size: 16
+  sampling_step: 1
+segregate:
+  number_of_samples: 16 # 16 if sample_size is 32, 11 or 17 if sample_size is 16
+  random_seed: 42
+augmentation:
+  use: True
+  mean: 0.0
+  standard_deviation: 0.05
+  apply_noise: True
+training:
+  loss: "binary_crossentropy"
+  batch_size: 256
+  epochs: 400
+  early_stop_patience: 30
+  early_stop_monitor: "val_accuracy"
+  number_of_filters: 8
+  kernel_size: 5
+  dropout_rate: 0.5
+  class_weigths: False
+
+hydra:
+  output_subdir: pipeline_synthetic/outputs/
+  run:
+    dir: .

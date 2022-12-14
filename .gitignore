@@ -2,3 +2,10 @@ __pycache__
 .ipynb_checkpoints
 *.csv
 *.npy
+.venv
+*.log
+*.pkl
+# mlruns/
+.vscode/
+outputs/
+*.h5
